@@ -1,30 +1,43 @@
-// class ShowsAPI {
-//     URL="http://api.tvmaze.com/search/shows?q=american";
-    
+class ShowsAPI {
+    URL="http://api.tvmaze.com/search/shows?q=";
+    cache = {};
 
+    async fetchdata(query){
+        if(!this.cache[query])
+        {
+            let response = await fetch(this.URL + query);
+            let data = await response.json();
+            let transformed = await data.map(item => {
+                return {
+                    id: item.show.id,
+                    name: item.show.name,
+                    description: item.show.summary,
+                    score: item.score
+        
+                };
+            }
+            )   
+            console.log("From API call")
+            this.cache[query] = transformed;
+            return transformed;
+        }
 
+        console.log("From Cache")
+        return this.cache[query];
+        
+    }
+}    
 
+const show = new ShowsAPI();
 
-// }
-
-async fetchdata(query){
-    let URL="http://api.tvmaze.com/search/shows?q=american"
-    let data = fetch(URL).then(response => response.json()).then(data => console.log(data))
-
+async function getMovieData(query){
+    let firstCall = await show.fetchdata(query)
+    let secoundCall = await show.fetchdata(query)
+    console.log(firstCall)
 }
+getMovieData('big')
 
 
 
 
-// 1. The data should be transformed to 
 
-// [{
-//     id: ''
-//     title: '',
-//     description: '',
-//     score: x
-// }]
-
-// 2. Cache the results
-
-// 3. Debounce the requests
