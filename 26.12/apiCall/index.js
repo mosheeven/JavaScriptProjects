@@ -1,3 +1,6 @@
+// ShowsAPI is class that have a method that get a name of a movie and return the Array of 10 movies with 4 properties (name,id,description,score)
+// There is also simple cache mechnizem that help to reduce the number API calls
+
 class ShowsAPI {
     URL="http://api.tvmaze.com/search/shows?q=";
     cache = {};
