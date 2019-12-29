@@ -1,6 +1,16 @@
+interface IShowData{
+    name : string,
+    id : number,
+    description : string,
+}
+
+interface ICache {
+    [query: string]: IShowData[];
+}
+
 class ApiCall{
     URL: string = "http://api.tvmaze.com/search/shows?q=";
-    cache: any = {};
+    cache: ICache = {};
     async fetchData(query: string){
 
         if(this.cache[query]){
@@ -10,14 +20,14 @@ class ApiCall{
         let fullquery: string = this.URL + query;
         const response = await fetch(fullquery)
         const data: [] = await response.json();
-        const tranformed = data.map((item: any) => { return {
-            name: <String> item.show.name,
+        const tranformed = data.map((item: any): IShowData => { return {
+            name: <string> item.show.name,
             id: <number> item.show.id,
-            description: <String> item.show.summary
+            description: <string> item.show.summary
 
         }});
 
-        this.cache = {query : tranformed}
+        this.cache[query] = tranformed;
         console.log(tranformed);
 
     };
