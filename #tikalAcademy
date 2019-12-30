@@ -1,0 +1,38 @@
+#tikalAcademy 
+###22.12.19
+1. localStorage, sessionStorage
+Client storage that allow you to store data on the client side. 
+Example: authentication with the server.
+
+2. Hoisting 
+The process of copying variable declaration to the top of the scope at runtime. The variable is available but is not yet assigned.
+*always prefer to define vars in the top of the scope.
+The js file will be after hoisting: vars -> function -> code by order.
+
+3. this
+This is called at the time of invocation.
+Global this is undefined in "use strict"
+
+4. bind,call and apply
+bind: call me later. I can be updated from call to call.
+apply: execute me right now; this + individual.
+call: execute me rigth now; this + individual parameters.
+
+5. closures: 
+A function inside a function that relied on the other function varibales to work. 
+
+6. callback, event loop
+callback is function that you pass as an argument to an async function. when the async function finish to run it calls the function we passed. 
+setTimeout(function(){}, <duration>) - this is good example to async function. the js will keep running and the function will be execute after <duration>
+*Keeo in mind that we cannot control the order of the async function if we need order we will need to put then inside. 
+* call back stack-> webApi -> even queue-> stack
+
+7. promises:
+
+
+8. Functional programming: 
+
+
+
+5.go over map,filter, reduse. 
+6.go over presantion. 

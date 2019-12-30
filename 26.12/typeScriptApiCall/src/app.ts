@@ -36,8 +36,3 @@ class ApiCall{
 
 const sampleCall = new ApiCall();
 sampleCall.fetchData("love");
-
-
-// 2. Cache the results
-
-// 3. Debounce the requests
